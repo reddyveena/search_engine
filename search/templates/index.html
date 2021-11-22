@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <style>
+body {
+font-size: 10pt;
+font-family: arial, sans-serif;
+background-color: lavender;
+}
+
+a {
+text-decoration: none;
+
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+button {
+font-weight: bold;
+font-family: arial;
+}
+
+
+/* Top Toolbar */
+
+.top-toolbar {
+height: 50px;
+float:right;
+margin: 7px 21px;
+}
+
+.top-toolbar nav a {
+margin: 3px 6px;
+color: #404040;
+}
+
+.top-toolbar nav a:hover {
+color: #111111;
+}
+
+.top-toolbar nav button {
+padding: 7px 12px;
+border-radius: 2px;
+background-color: #4585F1;
+color: white;
+border: 1px darkblue;
+font-size: 10pt;
+}
+
+.top-toolbar nav button:hover {
+box-shadow: 1px 1px 0 rgba(0,0,0,.5);
+}
+
+.top-toolbar nav img {
+margin: 0 7.5px;
+height: 25px;
+position: relative;
+top: 7px;}
+
+/* top left toolbar */
+
+.top-toolbar-left {
+height: 50px;
+float:left;
+margin: 7px 21px;
+}
+
+.top-toolbar-left nav a {
+margin: 3px 6px;
+color: #404040;
+font-size: 18px;
+}
+
+/* End of Top Toolbar */
+/* Search */
+
+.search {
+background-color: #DBDBF4;
+margin: auto;
+width: 700px;
+height: 300px;
+text-align: center;
+clear: both;
+
+
+}
+
+.logo {
+max-width: 21%;
+margin: 0 auto;
+}
+
+.search img {
+margin-bottom: 3%;
+max-width: 100%;
+}
+.rv{
+        color: #242F94;
+        }
+
+.search input {
+height: 25px;
+width: 570px;
+border-radius:20px;
+border: 1px solid #D8D8D8;
+padding: 5px;
+font-size: 15pt;
+/* background: url('images/microphone.png') no-repeat;
+background-position: right;
+background-size: 4.25%;*/
+}
+
+.search-bar {
+max-width: 80%;
+}
+
+.search input:focus {
+outline: none;
+border: 1px solid #4285F4;
+}
+
+.search button {
+margin: 14px 7px 0 5px;
+padding: 7px 8px;
+border-radius: 20px;
+border: 1px solid #D0D0D0;
+color: #444444;
+font-size:15px;
+height: 35px;
+width: 100px;
+}
+
+.search button:hover {
+box-shadow: 1px 1px 1px rgba(.2,.2,.2,.5);
+}
+
+/* End of Search */
+/* Footer */
+
+footer {
+position: fixed;
+bottom: 0;
+height: 42px;
+width: 100%;
+font-size: 9.5pt;
+background-color:lightgrey;
+}
+
+.footer-left {
+float: left;
+margin-left: 16px;
+}
+
+.footer-right {
+float: right;
+margin-right: 16px;
+}
+
+footer nav {
+display: inline-block;
+padding: 15px 0 0 0;
+}
+
+footer nav a {
+padding: 3px 14px;
+color: #646464;
+}
+
+footer nav a:hover {
+color: #000000;
+}
+
+/* End of Footer */
+
+@media screen and (max-width: 510px) {
+.top-toolbar nav a:nth-child(2), a:nth-child(3), footer {
+display:none;
+}
+
+.logo {
+max-width: 40%;
+}
+}
+</style>
+</head>
+<body>
+<div class="top-toolbar">
+        <nav>
+                <img src="" />
+                {% if user.is_authenticated %}
+                <h5>Hello,{{user.first_name}} {{user.last_name}}</h5>
+                <a href="logout"><button>Logout</button></a>
+                {% else %}
+                <a href="register"><button class="signin" onclick="sign" >Sign Up</button></a>
+                <a href="login"><button class="login">Login</button></a>
+                {% endif %}
+        </nav>
+</div>
+<div class="top-toolbar-left">
+        <nav>
+            <a href="#">Video</a>
+            <a href="images">Images</a>
+        </nav>
+</div>
+<div class="search">
+        <div class="logo">
+                <img src=""/>
+        </div>
+        <form method="POST" action="search">
+                {% csrf_token %}
+                <img src="" />
+                <h1 class="rv"> R V College of Engineering </h1>
+                <input class="search-bar" type="text" name="search" placeholder="     type here to search" />
+                <div class="search-nav">
+                        <div class="search-button">
+                                <a href="#"><button type=" submit ">Search</button></a>
+                        </div>
+                </div>
+        </form>
+</div>
+<div class="footer">
+        <footer class="bottom-toolbar">
+                <nav class="footer-left">
+                        <a href="#">Advertising</a>
+                        <a href="#">Business</a>
+                        <a href="#">About</a>
+                        <a href="#">Settings</a>
+                </nav>
+
+                <nav class="footer-right">
+                        <a href="#"><B>Developed by Veena Reddy and Vijaylaxmi Patil <B> </a>
+                </nav>
+
+        </footer>
+</div>
+</body>
+</html>
